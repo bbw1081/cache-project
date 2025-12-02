@@ -1,8 +1,14 @@
 
-nominal_size = input("Give nominal size in bytes ")
+while(True):
+    nominal_size = input("Give nominal size in bytes ")
+    try:
+        nominal_num = int(nominal_size)
+        break
+    except ValueError:
+        print("Invalid input, try again!")
 
 words_per_block = input("Give the number of words per block (1,2,4,8)")
-while(true):
+while(True):
     if(not words_per_block in (1, 2, 4, 8)):
         words_per_block = input("Try again! must be 1, 2, 4, or 8")
     else:
@@ -19,4 +25,10 @@ while(True):
     else:
         print("Invalid input! Try again")
 
-        
+while(True):
+    blocks_per_set = input("Give the numer of blocks per set ")
+    try:
+        blocks_per_set_num = int(blocks_per_set)
+        break
+    except ValueError:
+        print("Invalid input, try again!")
