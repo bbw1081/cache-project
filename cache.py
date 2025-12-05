@@ -1,3 +1,4 @@
+from cacheStorage import *
 
 def get_values():
     # get the nominal size of the cache in bytes
@@ -27,14 +28,6 @@ def get_values():
         mapping_policy = input("Enter mapping policy, 0 for Direct-Mapped and 1 for set-associative: ")
         if(mapping_policy == "1"):
             # if set-associative...
-            # get the number of sets
-            while(True):
-                n_sets = input("enter the N number of sets: ")
-                try:
-                    n_sets_num = int(n_sets)
-                    break
-                except ValueError:
-                    print("invalid input, try again!")
 
             # get the number of blocks per set
             while(True):
@@ -48,17 +41,19 @@ def get_values():
             break
         elif(mapping_policy == "0"):
             # if direct mapped set unused values to null (None)
-            n_sets_num = None
             blocks_per_set_num = None
             break
         else:
             print("Invalid input! Try again")
 
     #return all the values
-    return nominal_num, words_per_block_num, int(mapping_policy), n_sets_num, blocks_per_set_num
+    return nominal_num, words_per_block_num, int(mapping_policy), blocks_per_set_num
 
 def main():
-    nominal_size, words_per_block, mapping_policy_int, num_sets, blocks_per_set = get_values()    
+    nominal_size, words_per_block, mapping_policy_int, blocks_per_set = get_values()
+    cache = CacheStorageSystem(nominal_size, words_per_block, mapping_policy_int, blocks_per_set)
+    cache_info = cache.get_cache_info()
+    print(cache_info)
 
 if __name__ == "__main__":
     main()

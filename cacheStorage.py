@@ -1,7 +1,7 @@
 import random
 
 class CacheStorageSystem:
-    def __init__(self, nominal_size, words_per_block, mapping_policy, blocks_per_set):
+    def __init__(self, nominal_size: int, words_per_block: int, mapping_policy: int, blocks_per_set: int):
         
         bytes_per_word = 4
         self.block_size_bytes = words_per_block * bytes_per_word
@@ -11,7 +11,7 @@ class CacheStorageSystem:
         self.num_blocks = self.nominal_size // self.block_size_bytes
         
         # Handle mapping policy
-        self.mapping_policy = mapping_policy.lower()
+        self.mapping_policy = mapping_policy
         
         # mapping policy: 0 is direct, 1 is set associative
 
